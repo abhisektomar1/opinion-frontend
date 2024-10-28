@@ -8,6 +8,7 @@ export default function Landing(){
     <Hero />
     <Phone />
     <Features />
+  
     </>
   )
 }
