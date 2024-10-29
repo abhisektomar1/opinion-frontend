@@ -3,10 +3,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { CheckIcon, MoonStar, SunMoon } from 'lucide-react'
-import { useEffect, useState, useLayoutEffect, useRef } from 'react'
+import {  useState, useRef } from 'react'
 import SparklesText from '@/components/ui/sparkles-text'
 import gsap from 'gsap'
 import { useTheme } from 'next-themes'
+import { useGSAP } from '@gsap/react'
 
 export default function Hero() {
     const [active, setActive] = useState<string | null>(null);
@@ -24,7 +25,7 @@ export default function Hero() {
     const imageRef = useRef<any>(null);
   
 
-    useLayoutEffect(() => {
+    useGSAP(() => {
       // Hide elements initially
       gsap.set([
         headerRef.current,
