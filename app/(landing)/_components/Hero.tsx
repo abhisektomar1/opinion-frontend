@@ -23,13 +23,6 @@ export default function Hero() {
     const disclaimerRef = useRef<any>(null);
     const imageRef = useRef<any>(null);
   
-    // useEffect(() => {
-    //   if (darkMode) {
-    //     document.documentElement.classList.add("dark");
-    //   } else {
-    //     document.documentElement.classList.remove("dark");
-    //   }
-    // }, [darkMode]);
 
     useLayoutEffect(() => {
       // Hide elements initially
