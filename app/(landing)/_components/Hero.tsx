@@ -6,11 +6,12 @@ import { CheckIcon, MoonStar, SunMoon } from 'lucide-react'
 import { useEffect, useState, useLayoutEffect, useRef } from 'react'
 import SparklesText from '@/components/ui/sparkles-text'
 import gsap from 'gsap'
+import { useTheme } from 'next-themes'
 
 export default function Hero() {
     const [active, setActive] = useState<string | null>(null);
     const [darkMode, setDarkMode] = useState(false);
-    
+    const { theme, setTheme } = useTheme();
     // Create refs for animated elements
     const headerRef = useRef<any>(null);
     const logoRef = useRef<any>(null);
@@ -22,13 +23,13 @@ export default function Hero() {
     const disclaimerRef = useRef<any>(null);
     const imageRef = useRef<any>(null);
   
-    useEffect(() => {
-      if (darkMode) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    }, [darkMode]);
+    // useEffect(() => {
+    //   if (darkMode) {
+    //     document.documentElement.classList.add("dark");
+    //   } else {
+    //     document.documentElement.classList.remove("dark");
+    //   }
+    // }, [darkMode]);
 
     useLayoutEffect(() => {
       // Hide elements initially
@@ -116,7 +117,10 @@ export default function Hero() {
           <Button variant="outline" className="hidden md:inline-flex">Download App</Button>
           <Button variant="default" className="hidden md:inline-flex">Trade Online</Button>
           <button
-            onClick={() => setDarkMode(!darkMode)}
+            onClick={() => {
+              setTheme(theme === "dark" ? "light" : "dark")
+              setDarkMode(!darkMode)
+            }}
             className={`
               p-2 rounded-lg
               ${darkMode ? "bg-gray-800 text-white" : " text-gray-800 bg-gray-100"}
